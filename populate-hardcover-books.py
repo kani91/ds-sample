@@ -5,8 +5,8 @@ from Functions import Get_best_selling_books_multiple
 
 conn =sqlite3.connect('Nyt.db')
 
-start_date = date(2018, 11, 30)
-end_date = date(2018, 12, 31)
+start_date = date(2009, 12, 31)
+end_date = date(2009, 12, 31)
 query_bk_type="hardcover-nonfiction"
 
 
