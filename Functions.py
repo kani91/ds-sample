@@ -1,8 +1,8 @@
 import pandas as pd 
-from datetime import datetime
+from datetime import datetime, timedelta, date
+import time
 import sqlite3
-from datetime import timedelta
-from datetime import date
+
 
 
 def Get_best_selling_books_multiple(query_date_start,query_date_end,query_bk_type):
@@ -60,11 +60,15 @@ def Add_meta_details(small_list,query_date,query_bk_type):
 
 def Assign_limit_attributes():
     #assign a limited set of attributes 
-     limited_attribute_set=['title','weeks_on_list','primary_isbn13','publisher','author','rank','book_image_height','book_image_width','price','isbns','buy_links','book_image','amazon_product_url']
-        return limited_attribute_set
+    limited_attribute_set = ['title','weeks_on_list','primary_isbn13',
+                              'publisher','author','rank',
+                              'book_image_height','book_image_width',
+                            'price','book_image',
+                              'amazon_product_url']
+    return limited_attribute_set
 
         
 
     
 
-                 
+            
