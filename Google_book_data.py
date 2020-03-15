@@ -19,21 +19,21 @@ def get_googledata(isbn):
     
     try:
         raw_data_file=pd.read_json(f"https://www.googleapis.com/books/v1/volumes?q=isbn:{isbn}&key:{auth_key}")
-        list_of_attributes=['title','subtitle','authors','publishedDate','publisher','description','pageCount','printType','categories', 'averageRating']
+        list_of_attributes=['title','subtitle','authors','publishedDate','publisher','description','pageCount','printType','categories', 'averageRating','ratingsCount']
         google_info={k:v for k,v in raw_data_file['items'][0]['volumeInfo'].items() if k in list_of_attributes}
         google_info['isbn'] = isbn
         google_info['isfound']=1
         
-        print(f"added this - {google_info['isbn']}")
+        #print(f"added this - {google_info['isbn']}")
         return google_info
     
     except:
 #         google_info['isbn'] = isbn
 #         google_info['isfound']=0
-        google_info={}
-        google_info['isbn'] = isbn
-        google_info['isfound']=0
-        print(f"did not add this - {google_info['isbn']}")
+#         google_info={}
+#         google_info['isbn'] = isbn
+#         google_info['isfound']=0
+#         print(f"did not add this - {google_info['isbn']}")
         return None
 
     
@@ -46,5 +46,11 @@ def get_googledata_for_all_isbns(listofcleanisbn):
     return google_isbn_data
 
 
+#books=get_googledata_for_all_isbns(listofcleanisbn)
+#books_clean=[book for book in books if book is not None]
+#books_clean_df=pd.DataFrame(books_clean)
+#books_clean_df['authors']=books_clean_df['authors'].astype(str)
+#books_clean_df['categories']=books_clean_df['categories'].astype(str)
+#books_clean_df.to_sql('g_data',conn,if_exists='replace')
 
 
